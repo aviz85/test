@@ -1,5 +1,6 @@
 // reference the http module so we can create a webserver
 var http = require("http");
+var Firebase = require("firebase");
 
 // create a server
 http.createServer(function(req, res) {
@@ -12,3 +13,10 @@ http.createServer(function(req, res) {
 
 // Click the 'Run' button at the top to start your server,
 // then click the URL that is emitted to the Output tab of the console
+
+var db = new Firebase("https://mpcircles.firebaseio.com");
+
+db.on("child_added",function (snapshot) {
+    console.log(snapshot.key());
+    
+});
